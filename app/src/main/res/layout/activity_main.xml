@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- LENGKUNG ATAS -->
+    <ImageView
+        android:id="@+id/topCircle"
+        android:layout_width="360dp"
+        android:layout_height="300dp"
+        android:src="@drawable/lingkaran_biru_muda"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:translationX="-150dp"
+        android:translationY="-150dp"/>
+
+    <!-- LOGO TENGAH -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="167dp"
+        android:layout_height="152dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="230dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo_gradex" />
+
+    <!-- TULISAN GRADE X -->
+    <TextView
+        android:id="@+id/titleGradex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grade X"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:textColor="#0E4680"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"/>
+
+    <!-- LENGKUNG BAWAH -->
+    <ImageView
+        android:id="@+id/bottomCircle"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-280dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/lingkaran_biru_tua" />
+
+</RelativeLayout>

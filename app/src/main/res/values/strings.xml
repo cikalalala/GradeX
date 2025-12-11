@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Grade X</string>
+
+    <!-- Main -->
+    <string name="title_prediksi">Prediksi Nilai</string>
+    <string name="hint_nilai">Nilai rata-rata ulangan…</string>
+    <string name="hint_belajar">Jam Belajar Perhari…</string>
+    <string name="hint_tidur">Jam Tidur Permalam…</string>
+    <string name="hint_kehadiran">Persentase Kehadiran…</string>
+    <string name="btn_prediksi">Mulai Prediksi</string>
+
+    <!-- Result -->
+    <string name="hasil_prediksi">Hasil Prediksi</string>
+    <string name="analisis_faktor">Analisis Faktor</string>
+    <string name="rekomendasi">Rekomendasi</string>
+</resources>

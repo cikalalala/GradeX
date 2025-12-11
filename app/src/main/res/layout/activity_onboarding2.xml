@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- HEADER BIRU CURVE -->
+    <ImageView
+        android:id="@+id/bottomCircle"
+        android:layout_width="700dp"
+        android:layout_height="500dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/lingkaran_biru_tua"
+        android:translationY="-400dp" />   <!-- geser ke atas agar melayang keluar layout -->
+
+
+    <LinearLayout
+        android:id="@+id/circleContainer"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="90dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:background="@drawable/lingkaran_putih">
+
+        <ImageView
+            android:id="@+id/mainImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/books_icon" />
+    </LinearLayout>
+
+    <!-- TITLE -->
+    <TextView
+        android:id="@+id/titleOnboard"
+        android:layout_below="@id/circleContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Catat Materi Lebih Rapi dan Terstruktur"
+        android:textColor="#1C4EC9"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content" />
+
+    <!-- DESKRIPSI -->
+    <TextView
+        android:id="@+id/descOnboard"
+        android:layout_below="@id/titleOnboard"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:text="Simpan ringkasan dan poin penting tiap mata pelajaran agar belajar lebih rapi dan terarah."
+        android:textColor="#555555"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- DOT INDICATOR -->
+    <LinearLayout
+        android:id="@+id/dotIndicator"
+        android:layout_below="@id/descOnboard"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- INACTIVE -->
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/dot_inactive"
+            android:layout_marginRight="10dp" />
+
+        <!-- ACTIVE -->
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/dot_active" />
+    </LinearLayout>
+
+    <!-- BUTTON LANJUT -->
+    <Button
+        android:id="@+id/btnNext2"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Lanjut >"
+        android:textSize="16sp"
+        android:backgroundTint="#1C4EC9"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>

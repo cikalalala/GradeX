@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#B2D3FF" />  <!-- Biru muda seperti Figma -->
+
+    <!-- Membentuk oval -->
+    <size android:width="360dp" android:height="350dp" />
+    <corners android:radius="380dp" />
+</shape>
