@@ -7,34 +7,44 @@
     <!-- HEADER BIRU CURVE -->
     <ImageView
         android:id="@+id/bottomCircle"
-        android:layout_width="700dp"
-        android:layout_height="500dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
         android:src="@drawable/lingkaran_biru_tua"
-        android:translationY="-400dp" />   <!-- geser ke atas agar melayang keluar layout -->
+        android:translationY="-350dp" />
 
-
+    <!-- LINGKARAN BIRU BESAR -->
     <LinearLayout
-        android:id="@+id/circleContainer"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="90dp"
+        android:id="@+id/blueCircle"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:background="@drawable/lingkaran_putih">
+        android:background="@drawable/lingkaran_biru_muda">
 
-        <ImageView
-            android:id="@+id/mainImage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/books_icon" />
+        <!-- LINGKARAN PUTIH DI DALAMNYA -->
+        <LinearLayout
+            android:id="@+id/whiteCircle"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            android:gravity="center"
+            android:background="@drawable/lingkaran_putih">
+
+            <ImageView
+                android:id="@+id/mainImage"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:src="@drawable/book_icon"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
     </LinearLayout>
 
     <!-- TITLE -->
     <TextView
         android:id="@+id/titleOnboard"
-        android:layout_below="@id/circleContainer"
+        android:layout_below="@id/blueCircle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="Catat Materi Lebih Rapi dan Terstruktur"
@@ -60,21 +70,24 @@
         android:layout_height="wrap_content" />
 
     <!-- DOT INDICATOR -->
+
+    <!-- BUTTON LANJUT -->
+
     <LinearLayout
         android:id="@+id/dotIndicator"
-        android:layout_below="@id/descOnboard"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descOnboard"
+        android:layout_marginTop="228dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <!-- INACTIVE -->
         <View
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:background="@drawable/dot_inactive"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:background="@drawable/dot_inactive" />
 
         <!-- ACTIVE -->
         <View
@@ -83,7 +96,6 @@
             android:background="@drawable/dot_active" />
     </LinearLayout>
 
-    <!-- BUTTON LANJUT -->
     <Button
         android:id="@+id/btnNext2"
         android:layout_alignParentBottom="true"

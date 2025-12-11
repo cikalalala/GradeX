@@ -1,9 +1,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!-- Base application theme -->
     <style name="Base.Theme.GradeX" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- Override warna DEFAULT Material3 yang ungu -->
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorPrimaryContainer">@color/primary_blue_light</item>
+
+        <item name="colorSecondary">@color/primary_blue_dark</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+
+        <!-- HENTIKAN tombol Material3 dari auto-tinting -->
+        <item name="materialButtonStyle">@style/NoTintButtonStyle</item>
     </style>
 
     <style name="Theme.GradeX" parent="Base.Theme.GradeX" />
+
+    <!-- Style khusus agar button TIDAK ditint ungu -->
+    <style name="NoTintButtonStyle" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@null</item>
+    </style>
+
 </resources>

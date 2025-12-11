@@ -1,63 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+    <!-- HEADER BIRU CURVE -->
+    <ImageView
+        android:id="@+id/headerCurve"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="24dp"
-        android:gravity="center_horizontal">
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/lingkaran_biru_tua"
+        android:translationY="-350dp" />
 
-        <ImageView
-            android:layout_width="260dp"
-            android:layout_height="200dp"
-            android:src="@drawable/illus_prediksi" />
+    <!-- LINGKARAN BIRU BESAR -->
+    <LinearLayout
+        android:id="@+id/blueCircle"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:background="@drawable/lingkaran_biru_muda">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Prediksi Nilai dengan AI"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#1E63D7"
-            android:layout_marginTop="20dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="GradeX menggunakan analisis data untuk memberikan prediksi nilai akhir yang lebih akurat. Dengan bantuan AI..."
-            android:textSize="14sp"
-            android:gravity="center"
-            android:layout_marginTop="12dp"/>
-
+        <!-- LINGKARAN PUTIH DI DALAM -->
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:id="@+id/whiteCircle"
+            android:layout_width="215dp"
+            android:layout_height="215dp"
+            android:gravity="center"
+            android:background="@drawable/lingkaran_putih">
 
-            <View
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:background="@drawable/dot_active"
-                android:layout_marginEnd="8dp"/>
-
-            <View
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:background="@drawable/dot_inactive"/>
+            <ImageView
+                android:id="@+id/mainImage"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:src="@drawable/ilustrasi_prediksi"
+                android:adjustViewBounds="true" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="Lanjut >"
-            android:backgroundTint="#1E63D7"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="24dp"/>
     </LinearLayout>
-</ScrollView>
+
+    <!-- TITLE -->
+    <TextView
+        android:id="@+id/titleOnboard"
+        android:layout_below="@id/blueCircle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Prediksi Nilai dengan AI"
+        android:textColor="#1E63D7"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- DESKRIPSI -->
+    <TextView
+        android:id="@+id/descOnboard"
+        android:layout_below="@id/titleOnboard"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:text="GradeX menggunakan analisis data untuk memberikan prediksi nilai akhir yang lebih akurat. Dengan bantuan AI, kamu bisa mengetahui posisi akademik sejak awal dan menyiapkan strategi belajar yang lebih tepat."
+        android:textColor="#555555"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- DOT INDICATOR -->
+    <LinearLayout
+        android:id="@+id/dotIndicator"
+        android:layout_below="@id/descOnboard"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!-- ACTIVE -->
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/dot_active"
+            android:layout_marginEnd="12dp" />
+
+        <!-- INACTIVE -->
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/dot_inactive" />
+    </LinearLayout>
+
+    <!-- BUTTON LANJUT -->
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Lanjut >"
+        android:textSize="16sp"
+        android:backgroundTint="#1E63D7"
+        android:textColor="#FFFFFF" />
+</RelativeLayout>
