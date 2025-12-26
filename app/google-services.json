@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "698468748184",
+    "project_id": "gradex-46853",
+    "storage_bucket": "gradex-46853.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698468748184:android:f1fc3293739ab67d9479ed",
+        "android_client_info": {
+          "package_name": "com.example.gradex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_A9gM0Oy7ga_FZP7wD16KGs9QHx0t158"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
