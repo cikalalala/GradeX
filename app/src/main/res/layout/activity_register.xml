@@ -14,14 +14,8 @@
             android:layout_height="200dp"
             android:background="@drawable/header_gradient">
 
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_back"
-                android:layout_marginTop="50dp"
-                android:layout_marginLeft="20dp" />
-
             <TextView
+                android:id="@+id/tvRegisterTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Register"
@@ -32,6 +26,7 @@
                 android:layout_marginTop="90dp"/>
 
             <TextView
+                android:id="@+id/tvLoginLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Already have an account? Log In"
@@ -42,6 +37,7 @@
 
         <!-- FORM CARD -->
         <LinearLayout
+            android:id="@+id/formCard"
             android:background="@drawable/card_white_top"
             android:layout_marginTop="-20dp"
             android:padding="20dp"
@@ -49,12 +45,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- NAME -->
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/etFirstName"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="55dp"
@@ -64,6 +62,7 @@
                     android:layout_marginTop="10dp"/>
 
                 <EditText
+                    android:id="@+id/etLastName"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="55dp"
@@ -74,31 +73,20 @@
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
 
+            <!-- EMAIL -->
             <EditText
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:hint="Email"
                 android:background="@drawable/input_bg"
                 android:padding="15dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:inputType="textEmailAddress"/>
 
+            <!-- PASSWORD -->
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Birth of date"
-                android:background="@drawable/input_bg"
-                android:padding="15dp"
-                android:layout_marginTop="10dp"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Phone Number"
-                android:background="@drawable/input_bg"
-                android:padding="15dp"
-                android:layout_marginTop="10dp"/>
-
-            <EditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:hint="Set Password"
@@ -107,7 +95,9 @@
                 android:padding="15dp"
                 android:layout_marginTop="10dp"/>
 
+            <!-- BUTTON REGISTER -->
             <Button
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:text="Register"

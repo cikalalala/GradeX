@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,30 +16,28 @@
             android:background="@drawable/header_gradient">
 
             <ImageView
-                android:id="@+id/imgHeader"
-                android:layout_width="400dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="0dp"
-                android:src="@drawable/login_header" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/login_header"/>
         </RelativeLayout>
 
-        <!-- WHITE FLOATING CARD -->
+        <!-- CARD PUTIH -->
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/card_white_top"
             android:layout_marginTop="-30dp"
             android:padding="20dp"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
-            <!-- TAB SEGMENT -->
+            <!-- TAB -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:orientation="horizontal"
                 android:background="@drawable/bg_tab"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnLoginTab"
@@ -46,8 +45,8 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:text="Log In"
-                    android:background="@color/primary_blue"
-                    android:textColor="#000"/>
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/btn_blue"/>
 
                 <Button
                     android:id="@+id/btnSignupTab"
@@ -55,56 +54,62 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:text="Sign Up"
-                    android:background="@android:color/transparent"
-                    android:textColor="#909090"/>
+                    android:textColor="#909090"
+                    android:background="@android:color/transparent"/>
             </LinearLayout>
 
             <!-- EMAIL -->
             <EditText
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:hint="Email"
                 android:background="@drawable/input_bg"
                 android:padding="15dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:inputType="textEmailAddress"/>
 
             <!-- PASSWORD -->
             <EditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:hint="Password"
-                android:inputType="textPassword"
                 android:background="@drawable/input_bg"
                 android:padding="15dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:inputType="textPassword"/>
 
+            <!-- REMEMBER -->
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <CheckBox
-                    android:text="Remember me"
+                    android:id="@+id/cbRemember"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="Remember me"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Forgot Password ?"
+                    android:text="Forgot Password?"
                     android:textColor="#1A73E8"
-                    android:layout_gravity="end"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:gravity="end"/>
             </LinearLayout>
 
-            <!-- LOGIN BUTTON -->
+            <!-- BUTTON LOGIN -->
             <Button
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/btn_blue"
                 android:text="Log In"
                 android:textColor="@android:color/white"
+                android:background="@drawable/btn_blue"
                 android:layout_marginTop="20dp"/>
 
             <TextView
@@ -112,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:text="Or"
                 android:gravity="center"
-                android:layout_marginTop="15dp" />
+                android:layout_marginTop="15dp"/>
 
             <!-- GOOGLE -->
             <LinearLayout
@@ -120,18 +125,15 @@
                 android:layout_height="55dp"
                 android:background="@drawable/input_bg"
                 android:gravity="center"
-                android:orientation="horizontal"
                 android:layout_marginTop="10dp">
 
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:src="@drawable/ic_google"/>
-
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-
 </ScrollView>

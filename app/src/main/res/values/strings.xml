@@ -1,7 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Grade X</string>
 
-    <!-- Main -->
+    <!-- Greeting -->
+    <string name="greeting">Hi, Lena!!</string>
+
+    <!-- Menu -->
+    <string name="menu_catatan">Catatan</string>
+    <string name="menu_tugas">Tugas</string>
+    <string name="menu_riwayat">Riwayat</string>
+    <string name="menu_prediksi">Prediksi</string>
+
+    <!-- Prediksi -->
     <string name="title_prediksi">Prediksi Nilai</string>
     <string name="hint_nilai">Nilai rata-rata ulangan…</string>
     <string name="hint_belajar">Jam Belajar Perhari…</string>

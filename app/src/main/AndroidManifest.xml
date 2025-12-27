@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GradeX">
 
-        <!-- MainActivity = SPLASH SCREEN -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -22,23 +21,12 @@
             </intent-filter>
         </activity>
 
-        <!-- Onboarding -->
-        <activity
-            android:name=".Onboarding1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Onboarding2Activity"
-            android:exported="false" />
+        <!-- Login / Register -->
+        <activity android:name=".LoginActivity" android:exported="false" />
+        <activity android:name=".RegisterActivity" android:exported="false" />
 
-        <!-- Halaman Prediksi -->
-        <activity
-            android:name=".PrediksiActivity"
-            android:exported="false" />
-
-        <!-- Hasil Prediksi -->
-        <activity
-            android:name=".ResultActivity"
-            android:exported="false" />
+        <!-- Home -->
+        <activity android:name=".HomeActivity" android:exported="false" />
 
     </application>
 
