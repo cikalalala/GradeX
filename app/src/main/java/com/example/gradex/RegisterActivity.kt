@@ -7,22 +7,26 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gradex.database.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import android.widget.ImageView
 
 class RegisterActivity : AppCompatActivity() {
 
+    // Deklarasi Firebase Auth dan Database
+    private lateinit var auth: FirebaseAuth
     private lateinit var dbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        // Inisialisasi Database
+        // 1. Inisialisasi Firebase
+        auth = FirebaseAuth.getInstance()
         dbRef = FirebaseDatabase.getInstance().getReference("user")
 
-        // Inisialisasi View sesuai ID di layout
+        // 2. Inisialisasi View
         val etFirstName = findViewById<EditText>(R.id.etFirstName)
         val etLastName = findViewById<EditText>(R.id.etLastName)
         val etEmail = findViewById<EditText>(R.id.etEmail)
@@ -30,8 +34,9 @@ class RegisterActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnRegister = findViewById<Button>(R.id.btnRegister)
         val tvLoginLink = findViewById<TextView>(R.id.tvLoginLink)
+        val btnBack = findViewById<ImageView>(R.id.btnBack)
 
-        // logika Klik Tombol Register
+        // Logika Klik Tombol Register
         btnRegister.setOnClickListener {
             val fName = etFirstName.text.toString().trim()
             val lName = etLastName.text.toString().trim()
@@ -39,36 +44,52 @@ class RegisterActivity : AppCompatActivity() {
             val phone = etPhone.text.toString().trim()
             val pass = etPassword.text.toString().trim()
 
+            // Validasi Input
             if (fName.isEmpty() || lName.isEmpty() || email.isEmpty() || phone.isEmpty() || pass.isEmpty()) {
                 Toast.makeText(this, "Tolong lengkapi semua kolom!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // membuat ID otomatis di database
-            // .push() membuat node unik di Firebase, .key mengambil string ID-nya
-            val userId = dbRef.push().key ?: ""
+            if (pass.length < 6) {
+                Toast.makeText(this, "Password minimal 6 karakter!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-            // Buat objek User dengan data lengkap
-            val user = User(userId, fName, lName, email, phone, pass)
+            // Jalankan proses pendaftaran
+            registerUser(fName, lName, email, phone, pass)
+        }
 
-            // Simpan ke database di bawah folder ID otomatis tadi
-            dbRef.child(userId).setValue(user)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Akun berhasil dibuat!", Toast.LENGTH_SHORT).show()
-                    finish() // Kembali ke LoginActivity
+        tvLoginLink.setOnClickListener { finish() }
+        btnBack.setOnClickListener { finish() }
+    }
+
+    private fun registerUser(fName: String, lName: String, email: String, phone: String, pass: String) {
+        // Tampilkan pesan loading
+        Toast.makeText(this, "Sedang mendaftarkan...", Toast.LENGTH_SHORT).show()
+
+        // 3. DAFTARKAN KE FIREBASE AUTHENTICATION TERLEBIH DAHULU
+        auth.createUserWithEmailAndPassword(email, pass)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Jika sukses, ambil UID (User ID) yang dibuat oleh Firebase Auth
+                    val userId = auth.currentUser?.uid ?: ""
+
+                    // 4. SIMPAN DATA LENGKAP KE REALTIME DATABASE MENGGUNAKAN UID TERSEBUT
+                    // Ini kunci agar Rules "auth != null" dan "$uid === auth.uid" bekerja
+                    val user = User(userId, fName, lName, email, phone, pass)
+
+                    dbRef.child(userId).setValue(user)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Akun berhasil dibuat!", Toast.LENGTH_SHORT).show()
+                            finish() // Kembali ke LoginActivity
+                        }
+                        .addOnFailureListener { err ->
+                            Toast.makeText(this, "Database Error: ${err.message}", Toast.LENGTH_SHORT).show()
+                        }
+                } else {
+                    // Jika gagal (misal: email sudah terdaftar atau format salah)
+                    Toast.makeText(this, "Auth Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                 }
-                .addOnFailureListener { err ->
-                    Toast.makeText(this, "Error: ${err.message}", Toast.LENGTH_SHORT).show()
-                }
-        }
-
-        // Kembali ke Login jika teks "Log In" diklik
-        tvLoginLink.setOnClickListener {
-            finish()
-        }
-        val btnBack = findViewById<ImageView>(R.id.btnBack)
-        btnBack.setOnClickListener {
-            finish() // Menutup halaman register dan balik ke login
-        }
+            }
     }
 }

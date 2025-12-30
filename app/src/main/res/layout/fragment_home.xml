@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true"
+    android:clipToPadding="false"
+    android:paddingBottom="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/topCircle"
+            android:layout_width="240dp"
+            android:layout_height="204dp"
+            android:contentDescription="@null"
+            android:src="@drawable/lingkaran_biru_tua"
+            android:translationX="-80dp"
+            android:translationY="-100dp" />
+
+        <TextView
+            android:id="@+id/txtGreeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi, User!!"
+            android:textSize="28sp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginTop="110dp"
+            android:layout_centerHorizontal="true" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardContainer"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/txtGreeting"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="25dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#BDD7F5">
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/blueLine"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:layout_below="@id/cardContainer"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/garis_biru" />
+
+        <GridLayout
+            android:id="@+id/menuGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/blueLine"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:columnCount="2"
+            android:alignmentMode="alignMargins"
+            android:useDefaultMargins="true">
+
+            <LinearLayout
+                android:id="@+id/menuCatatan"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/card_menu"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/ic_edit"
+                    app:tint="#0D47A1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Catatan"
+                    android:textColor="#555555"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menuTugas"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/card_menu"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/ic_edit"
+                    app:tint="#0D47A1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tugas"
+                    android:textColor="#555555"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menuRiwayat"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/card_menu"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/ic_history"
+                    app:tint="#0D47A1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Riwayat"
+                    android:textColor="#555555"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menuPrediksi"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/card_menu"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/ic_alarm"
+                    app:tint="#0D47A1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prediksi"
+                    android:textColor="#555555"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+        </GridLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/menuGrid" />
+
+    </RelativeLayout>
+</ScrollView>

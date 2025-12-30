@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- SCROLLABLE CONTENT -->
     <ScrollView
         android:id="@+id/scrollContent"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingBottom="20dp"
+        android:clipToPadding="false"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintBottom_toTopOf="@id/btnSimpanResult"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -20,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- HEADER -->
             <TextView
                 android:id="@+id/headerText"
                 android:layout_width="wrap_content"
@@ -31,7 +31,6 @@
                 android:textColor="@color/primary_blue_dark"
                 android:layout_margin="20dp" />
 
-            <!-- CARD SCORE -->
             <LinearLayout
                 android:id="@+id/cardScore"
                 android:layout_width="match_parent"
@@ -61,7 +60,6 @@
                     android:layout_marginTop="5dp" />
             </LinearLayout>
 
-            <!-- ANALISIS FAKTOR TITLE -->
             <TextView
                 android:id="@+id/faktorTitle"
                 android:layout_width="wrap_content"
@@ -74,7 +72,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="10dp" />
 
-            <!-- LIST FAKTOR -->
             <LinearLayout
                 android:id="@+id/faktorContainer"
                 android:orientation="vertical"
@@ -82,14 +79,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp">
 
-                <include layout="@layout/result_item" />
-                <include layout="@layout/result_item" />
-                <include layout="@layout/result_item" />
-                <include layout="@layout/result_item" />
+                <include layout="@layout/item_result" />
+                <include layout="@layout/item_result" />
+                <include layout="@layout/item_result" />
+                <include layout="@layout/item_result" />
 
             </LinearLayout>
 
-            <!-- REKOMENDASI TITLE -->
             <TextView
                 android:id="@+id/rekTitle"
                 android:layout_width="wrap_content"
@@ -102,7 +98,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="10dp" />
 
-            <!-- REKOMENDASI LIST -->
             <LinearLayout
                 android:id="@+id/listRekomendasi"
                 android:orientation="vertical"
@@ -114,14 +109,16 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- FIXED NAVBAR -->
-    <include
-        android:id="@+id/bottomNav"
-        layout="@layout/bottom_nav"
+    <Button
+        android:id="@+id/btnSimpanResult"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Simpan ke Riwayat"
+        android:backgroundTint="@color/primary_blue_dark"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,21 +14,17 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     buildFeatures {
-        viewBinding=true
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -40,26 +36,25 @@ android {
 }
 
 dependencies {
+    // UI & Core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    //database
+
+    // MPAndroidChart (Membutuhkan JitPack di settings.gradle)
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    // Firebase
     implementation("com.google.firebase:firebase-database-ktx:21.0.0")
     implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
 
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("androidx.appcompat:appcompat-resources:1.5.1")
-    implementation("androidx.emoji2:emoji2:1.2.0")
-    implementation("androidx.emoji2:emoji2-views-helper:1.2.0")
-    implementation("androidx.lifecycle:lifecycle-process:2.5.1")
-
-    // ONNX Runtime Android
+    // ML Engine
     implementation("com.microsoft.onnxruntime:onnxruntime-android:1.17.0")
-    implementation(libs.firebase.database) // versi stabil terbaru
+
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+    implementation("com.google.android.gms:play-services-auth:21.0.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -11,47 +11,47 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        // Ambil data USER_NAME dari Intent awal
         val userName = intent.getStringExtra("USER_NAME") ?: "User"
 
         if (savedInstanceState == null) {
-            val homeFrag = HomeFragment()
-            val bundle = Bundle()
-            bundle.putString("USER_NAME", userName)
-            homeFrag.arguments = bundle
-
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.main_container, homeFrag)
-                .commit()
+            // Fragment pertama yang muncul adalah Home
+            replaceFragment(HomeFragment())
         }
 
-
+        // 1. Menu Pertama: HOME
         findViewById<ImageView>(R.id.nav_home).setOnClickListener {
             replaceFragment(HomeFragment())
         }
 
+        // 2. Menu Kedua: ARTIKEL (Sebelumnya nav_chart)
         findViewById<ImageView>(R.id.nav_chart).setOnClickListener {
-            // Ganti dengan Fragment yang sesuai nanti
-            // replaceFragment(ChartFragment())
+            replaceFragment(ArtikelFragment())
         }
 
+        // 3. Menu Ketiga: NOTIFIKASI (Sebelumnya nav_ai)
         findViewById<ImageView>(R.id.nav_ai).setOnClickListener {
-            // replaceFragment(NotificationFragment())
+            replaceFragment(NotifikasiFragment())
         }
 
+        // 4. Menu Keempat: PROFIL
         findViewById<ImageView>(R.id.nav_profile).setOnClickListener {
-            // replaceFragment(ProfileFragment())
+            // Menggunakan ProfilFragment yang kita buat sebelumnya
+            replaceFragment(ProfileFragment())
         }
     }
 
     private fun replaceFragment(fragment: Fragment) {
         val userName = intent.getStringExtra("USER_NAME") ?: "User"
         val bundle = Bundle()
+        // Terus kirimkan USER_NAME agar Greeting di HomeFragment tetap aktif
         bundle.putString("USER_NAME", userName)
         fragment.arguments = bundle
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, fragment)
-            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out) // Biar halus
+            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            // Tidak menggunakan addToBackStack agar navigasi navbar utama tetap bersih
             .commit()
     }
 }

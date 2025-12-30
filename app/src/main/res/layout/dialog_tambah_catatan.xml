@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilih Mata Pelajaran"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerMapelCatatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/etJudulCatatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Judul Catatan (Misal: Rumus Aljabar)"
+        android:inputType="textCapSentences"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/etIsiCatatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="150dp"
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+        android:overScrollMode="always"
+        android:hint="Isi Catatan" />
+
+</LinearLayout>
