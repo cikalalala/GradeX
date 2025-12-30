@@ -1,17 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Grade X</string>
+    <string name="login">Log In</string>
+    <string name="signup">Sign Up</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="pass">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="or_text">Or</string>
+    <string name="header_image_login">Header Image Login</string>
+    <string name="google_icon">Google Icon</string>
 
-    <!-- Greeting -->
+    <string name="back">Back</string>
+    <string name="register">Register</string>
+    <string name="already_have_account">Already have an account? </string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="set_password">Set Password</string>
+
     <string name="greeting">Hi, Lena!!</string>
 
-    <!-- Menu -->
     <string name="menu_catatan">Catatan</string>
     <string name="menu_tugas">Tugas</string>
     <string name="menu_riwayat">Riwayat</string>
     <string name="menu_prediksi">Prediksi</string>
 
-    <!-- Prediksi -->
+    <string name="desc_home">Ikon Home</string>
+    <string name="desc_add_note">Tombol Tambah Catatan</string>
+
+    <string name="hint_judul_tugas">Judul Tugas</string>
+    <string name="hint_mapel">Nama Mata Pelajaran</string>
+    <string name="hint_deskripsi">Deskripsi</string>
+    <string name="pilih_mapel">Pilih Mata Pelajaran</string>
+    <string name="btn_simpan">Simpan</string>
+    <string name="btn_batal">Batal</string>
+    <string name="title_tugas">Tugas</string>
+    <string name="label_list_tugas">List Tugas</string>
+
+    <string name="desc_icon_tugas">Ikon Halaman Tugas</string>
+    <string name="desc_btn_tambah">Tombol Tambah Tugas Baru</string>
+
     <string name="title_prediksi">Prediksi Nilai</string>
     <string name="hint_nilai">Nilai rata-rata ulangan…</string>
     <string name="hint_belajar">Jam Belajar Perhari…</string>
@@ -19,8 +49,9 @@
     <string name="hint_kehadiran">Persentase Kehadiran…</string>
     <string name="btn_prediksi">Mulai Prediksi</string>
 
-    <!-- Result -->
     <string name="hasil_prediksi">Hasil Prediksi</string>
     <string name="analisis_faktor">Analisis Faktor</string>
     <string name="rekomendasi">Rekomendasi</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

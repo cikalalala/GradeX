@@ -13,8 +13,10 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, Onboarding1Activity::class.java))
+            // Arahkan ke OnboardingActivity
+            val intent = Intent(this, OnboardingActivity::class.java)
+            startActivity(intent)
             finish()
-        }, 2000) // 2 detik
+        }, 2000)
     }
 }

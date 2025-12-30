@@ -1,47 +1,57 @@
 package com.example.gradex
 
 import android.os.Bundle
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.database.*
-import com.example.gradex.database.User
+import androidx.fragment.app.Fragment
 
 class HomeActivity : AppCompatActivity() {
-
-    private lateinit var txtGreeting: TextView
-    private lateinit var dbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        txtGreeting = findViewById(R.id.txtGreeting)
-        dbRef = FirebaseDatabase.getInstance().getReference("users")
+        val userName = intent.getStringExtra("USER_NAME") ?: "User"
 
-        val userName = intent.getStringExtra("user_name") ?: ""
+        if (savedInstanceState == null) {
+            val homeFrag = HomeFragment()
+            val bundle = Bundle()
+            bundle.putString("USER_NAME", userName)
+            homeFrag.arguments = bundle
 
-        if (userName.isNotEmpty()) {
-            dbRef.orderByChild("name").equalTo(userName)
-                .addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (snapshot.exists()) {
-                            for (userSnap in snapshot.children) {
-                                val user = userSnap.getValue(User::class.java)
-                                if (user != null) {
-                                    txtGreeting.text = "Hello, ${user.name}!"
-                                }
-                            }
-                        } else {
-                            txtGreeting.text = "Hello!"
-                        }
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        txtGreeting.text = "Hello!"
-                    }
-                })
-        } else {
-            txtGreeting.text = "Hello!"
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.main_container, homeFrag)
+                .commit()
         }
+
+
+        findViewById<ImageView>(R.id.nav_home).setOnClickListener {
+            replaceFragment(HomeFragment())
+        }
+
+        findViewById<ImageView>(R.id.nav_chart).setOnClickListener {
+            // Ganti dengan Fragment yang sesuai nanti
+            // replaceFragment(ChartFragment())
+        }
+
+        findViewById<ImageView>(R.id.nav_ai).setOnClickListener {
+            // replaceFragment(NotificationFragment())
+        }
+
+        findViewById<ImageView>(R.id.nav_profile).setOnClickListener {
+            // replaceFragment(ProfileFragment())
+        }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val userName = intent.getStringExtra("USER_NAME") ?: "User"
+        val bundle = Bundle()
+        bundle.putString("USER_NAME", userName)
+        fragment.arguments = bundle
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, fragment)
+            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out) // Biar halus
+            .commit()
     }
 }

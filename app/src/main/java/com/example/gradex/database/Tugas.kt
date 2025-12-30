@@ -5,5 +5,5 @@ data class Tugas(
     val mapel_id: String = "",
     val judul_tugas: String = "",
     val deskripsi: String = "",
-    val status: String = "Pending"
+    val is_finished: Boolean = false
 )
