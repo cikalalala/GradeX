@@ -7,11 +7,12 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gradex.database.Tugas
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 class TugasAdapter(
     private val listTugas: List<Tugas>,
-    private val onDeleteClick: (Tugas) -> Unit // Callback untuk fitur hapus
+    private val onDeleteClick: (Tugas) -> Unit
 ) : RecyclerView.Adapter<TugasAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -27,28 +28,35 @@ class TugasAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listTugas[position]
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+
         holder.judul.text = data.judul_tugas
         holder.mapel.text = data.mapel_id
 
-        // 1. Reset listener ke null agar tidak memicu update otomatis saat binding
+        // 1. Reset listener agar tidak terjadi looping saat scrolling (Recycling)
         holder.cbTugas.setOnCheckedChangeListener(null)
 
-        // 2. Set status berdasarkan data dari model
+        // 2. Tampilkan status checkbox dari database
         holder.cbTugas.isChecked = data.is_finished
 
-        // 3. Simpan perubahan Checkbox ke Firebase
+        // 3. Simpan perubahan ke Firebase dengan Path yang BENAR
         holder.cbTugas.setOnClickListener {
             val isChecked = (it as CheckBox).isChecked
-            FirebaseDatabase.getInstance().getReference("Tugas")
-                .child(data.tugas_id)
-                .child("is_finished")
-                .setValue(isChecked)
-                .addOnFailureListener {
-                    holder.cbTugas.isChecked = !isChecked
-                }
+
+            if (userId.isNotEmpty()) {
+                // Pastikan path ini SAMA dengan path saat Anda mengambil data (child(userId))
+                FirebaseDatabase.getInstance().getReference("Tugas")
+                    .child(userId) // Tambahkan userId di sini
+                    .child(data.tugas_id)
+                    .child("is_finished")
+                    .setValue(isChecked)
+                    .addOnFailureListener {
+                        // Jika gagal, kembalikan posisi ceklis ke sebelumnya
+                        holder.cbTugas.isChecked = !isChecked
+                    }
+            }
         }
 
-        // 4. Fitur Hapus via Long Click
         holder.itemView.setOnLongClickListener {
             onDeleteClick(data)
             true

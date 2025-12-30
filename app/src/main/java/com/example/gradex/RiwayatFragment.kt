@@ -27,14 +27,15 @@ class RiwayatFragment : Fragment(R.layout.fragment_riwayat) {
 
     private fun fetchRiwayatData() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
-
-        if (userId == null) {
-            Toast.makeText(context, "Sesi login tidak ditemukan", Toast.LENGTH_SHORT).show()
-            return
-        }
+        if (userId == null) return
 
         dbRef = FirebaseDatabase.getInstance().getReference("riwayat_prediksi").child(userId)
 
+<<<<<<< HEAD
+        dbRef = FirebaseDatabase.getInstance().getReference("riwayat_prediksi").child(userId)
+
+=======
+>>>>>>> 99914ce15e774fd21055d1d0a766eebe00cbb4fd
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!isAdded) return
@@ -45,25 +46,49 @@ class RiwayatFragment : Fragment(R.layout.fragment_riwayat) {
                 }
                 listRiwayat.reverse()
 
+<<<<<<< HEAD
                 // Masukkan callback hapus ke adapter
                 rvRiwayat.adapter = RiwayatAdapter(listRiwayat) { item ->
                     showDeleteConfirmation(item)
+=======
+                // Inisialisasi adapter dengan lambda untuk handle hapus
+                rvRiwayat.adapter = RiwayatAdapter(listRiwayat) { item ->
+                    showConfirmDelete(item)
+>>>>>>> 99914ce15e774fd21055d1d0a766eebe00cbb4fd
                 }
             }
             override fun onCancelled(error: DatabaseError) {}
         })
     }
 
+<<<<<<< HEAD
     private fun showDeleteConfirmation(item: RiwayatPrediksi) {
         AlertDialog.Builder(requireContext())
             .setTitle("Hapus Riwayat")
             .setMessage("Apakah Anda yakin ingin menghapus riwayat prediksi ${item.mapel}?")
             .setPositiveButton("Hapus") { _, _ ->
                 deleteRiwayatItem(item)
+=======
+    private fun showConfirmDelete(item: RiwayatPrediksi) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Hapus Riwayat")
+            .setMessage("Hapus hasil prediksi untuk ${item.mapel}?")
+            .setPositiveButton("Hapus") { _, _ ->
+                // Gunakan id_prediksi sebagai key untuk menghapus
+                val idToDelete = item.id
+                if (!idToDelete.isNullOrEmpty()) {
+                    dbRef.child(idToDelete).removeValue().addOnSuccessListener {
+                        Toast.makeText(context, "Berhasil dihapus", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener {
+                        Toast.makeText(context, "Gagal menghapus: ${it.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+>>>>>>> 99914ce15e774fd21055d1d0a766eebe00cbb4fd
             }
             .setNegativeButton("Batal", null)
             .show()
     }
+<<<<<<< HEAD
 
     private fun deleteRiwayatItem(item: RiwayatPrediksi) {
         if (item.id.isNotEmpty()) {
@@ -78,4 +103,6 @@ class RiwayatFragment : Fragment(R.layout.fragment_riwayat) {
             Toast.makeText(context, "ID riwayat tidak ditemukan", Toast.LENGTH_SHORT).show()
         }
     }
+=======
+>>>>>>> 99914ce15e774fd21055d1d0a766eebe00cbb4fd
 }

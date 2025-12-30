@@ -57,6 +57,7 @@
                 android:clickable="true"
                 android:focusable="true"/>
 
+<<<<<<< HEAD
             <ImageView
                 android:id="@+id/btnDeleteRiwayat"
                 android:layout_width="40dp"
@@ -66,6 +67,18 @@
                 android:padding="10dp"
                 android:src="@drawable/ic_delete"
                 android:contentDescription="Delete"
+=======
+            <TextView
+                android:id="@+id/btnDeleteRiwayat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/btnViewRiwayat"
+                android:layout_alignBottom="@id/btnViewRiwayat"
+                android:padding="10dp"
+                android:text="DELETE"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+>>>>>>> 99914ce15e774fd21055d1d0a766eebe00cbb4fd
                 android:clickable="true"
                 android:focusable="true"/>
 
