@@ -44,7 +44,7 @@ dependencies {
 
     // MPAndroidChart (Membutuhkan JitPack di settings.gradle)
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     // Firebase
     implementation("com.google.firebase:firebase-database-ktx:21.0.0")
     implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
