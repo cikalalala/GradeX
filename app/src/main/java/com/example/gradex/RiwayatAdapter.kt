@@ -4,18 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gradex.database.RiwayatPrediksi
 
-class RiwayatAdapter(private val list: List<RiwayatPrediksi>) :
-    RecyclerView.Adapter<RiwayatAdapter.ViewHolder>() {
+class RiwayatAdapter(
+    private val list: List<RiwayatPrediksi>,
+    private val onDeleteClick: (RiwayatPrediksi) -> Unit // Callback untuk hapus
+) : RecyclerView.Adapter<RiwayatAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val txtMapel: TextView = view.findViewById(R.id.txtMapelRiwayat)
         val txtTanggal: TextView = view.findViewById(R.id.txtTanggalRiwayat)
         val btnView: TextView = view.findViewById(R.id.btnViewRiwayat)
+        val btnDelete: ImageView = view.findViewById(R.id.btnDeleteRiwayat) // Pastikan ID ini ada di item_riwayat.xml
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,6 +32,7 @@ class RiwayatAdapter(private val list: List<RiwayatPrediksi>) :
         holder.txtMapel.text = "Prediksi Nilai ${item.mapel}"
         holder.txtTanggal.text = item.tanggal_riwayat
 
+        // Klik untuk Lihat Detail
         holder.btnView.setOnClickListener {
             val fragment = ResultFragment()
             val bundle = Bundle().apply {
@@ -46,6 +51,11 @@ class RiwayatAdapter(private val list: List<RiwayatPrediksi>) :
                 .replace(R.id.main_container, fragment)
                 .addToBackStack(null)
                 .commit()
+        }
+
+        // Klik untuk Hapus
+        holder.btnDelete.setOnClickListener {
+            onDeleteClick(item)
         }
     }
 

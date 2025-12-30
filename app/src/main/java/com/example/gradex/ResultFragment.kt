@@ -28,8 +28,6 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
         val txtMessage = view.findViewById<TextView>(R.id.txtMessage)
         val btnSimpan = view.findViewById<Button>(R.id.btnSimpanResult)
 
-        // --- LOGIKA TAMBAHAN UNTUK REKOMENDASI POIN ---
-        // Cari container di XML untuk menampung list rekomendasi
         val rekomendasiContainer = view.findViewById<LinearLayout>(R.id.listRekomendasi)
 
         // Menampilkan skor

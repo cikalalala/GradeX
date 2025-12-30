@@ -57,6 +57,19 @@
                 android:clickable="true"
                 android:focusable="true"/>
 
+            <TextView
+                android:id="@+id/btnDeleteRiwayat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/btnViewRiwayat"
+                android:layout_alignBottom="@id/btnViewRiwayat"
+                android:padding="10dp"
+                android:text="DELETE"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true"/>
+
         </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
