@@ -57,6 +57,18 @@
                 android:clickable="true"
                 android:focusable="true"/>
 
+            <ImageView
+                android:id="@+id/btnDeleteRiwayat"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toStartOf="@id/btnViewRiwayat"
+                android:layout_alignBottom="@id/btnViewRiwayat"
+                android:padding="10dp"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="Delete"
+                android:clickable="true"
+                android:focusable="true"/>
+
         </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

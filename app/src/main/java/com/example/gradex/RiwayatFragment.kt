@@ -3,6 +3,7 @@ package com.example.gradex
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ class RiwayatFragment : Fragment(R.layout.fragment_riwayat) {
 
     private lateinit var rvRiwayat: RecyclerView
     private val listRiwayat = mutableListOf<RiwayatPrediksi>()
+    private lateinit var dbRef: DatabaseReference
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,7 +33,8 @@ class RiwayatFragment : Fragment(R.layout.fragment_riwayat) {
             return
         }
 
-        val dbRef = FirebaseDatabase.getInstance().getReference("riwayat_prediksi").child(userId)
+        dbRef = FirebaseDatabase.getInstance().getReference("riwayat_prediksi").child(userId)
+
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!isAdded) return
@@ -41,9 +44,38 @@ class RiwayatFragment : Fragment(R.layout.fragment_riwayat) {
                     if (item != null) listRiwayat.add(item)
                 }
                 listRiwayat.reverse()
-                rvRiwayat.adapter = RiwayatAdapter(listRiwayat)
+
+                // Masukkan callback hapus ke adapter
+                rvRiwayat.adapter = RiwayatAdapter(listRiwayat) { item ->
+                    showDeleteConfirmation(item)
+                }
             }
             override fun onCancelled(error: DatabaseError) {}
         })
+    }
+
+    private fun showDeleteConfirmation(item: RiwayatPrediksi) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Hapus Riwayat")
+            .setMessage("Apakah Anda yakin ingin menghapus riwayat prediksi ${item.mapel}?")
+            .setPositiveButton("Hapus") { _, _ ->
+                deleteRiwayatItem(item)
+            }
+            .setNegativeButton("Batal", null)
+            .show()
+    }
+
+    private fun deleteRiwayatItem(item: RiwayatPrediksi) {
+        if (item.id.isNotEmpty()) {
+            dbRef.child(item.id).removeValue()
+                .addOnSuccessListener {
+                    Toast.makeText(context, "Riwayat berhasil dihapus", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(context, "Gagal menghapus riwayat", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            Toast.makeText(context, "ID riwayat tidak ditemukan", Toast.LENGTH_SHORT).show()
+        }
     }
 }

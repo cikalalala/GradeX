@@ -5,5 +5,6 @@ data class Tugas(
     val mapel_id: String = "",
     val judul_tugas: String = "",
     val deskripsi: String = "",
-    val is_finished: Boolean = false
+    @field:JvmField // Penting agar Firebase mengenali boolean dengan benar
+    var is_finished: Boolean = false
 )
